@@ -1,0 +1,35 @@
+﻿<Window x:Class="MyNewWpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyNewWpfApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Canvas Name="allCanvas">
+        <Canvas Name="myCanvas" MouseDown="Canvas_MouseDown" Background="Gray" Height="434" Width="400" 
+                HorizontalAlignment="Center" VerticalAlignment="Top" MouseMove="myCanvas_MouseMove">
+            <TextBlock Name="PositionText" Background="White" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="10" HorizontalAlignment="Left" Width="64"/>
+
+        </Canvas>
+
+        <TextBlock Canvas.Left="414" TextWrapping="Wrap" Text="Lines:" Canvas.Top="72" HorizontalAlignment="Left" VerticalAlignment="Top" Width="44" FontSize="16"/>
+        <Button Content="Find intersection" Canvas.Left="675" Canvas.Top="9" Width="99" Click="FindIntersection_Click"/>
+        <DataGrid x:Name="LinesTable" Height="240" Width="360" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                  Canvas.Left="414" Canvas.Top="98" MouseLeftButtonDown="LinesTable_MouseLeftButtonDown">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="FirstP" Width="120" Binding="{Binding FirstPoint}"/>
+                <DataGridTextColumn Header="SecondP" Width="120" Binding="{Binding SecondPoint}"/>
+                <DataGridTextColumn Header="Color" Width="*" Binding="{Binding Color}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <EventSetter Event="Loaded" Handler="ColorCell_Loaded" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Name="Test" Canvas.Left="432" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="9" HorizontalAlignment="Left" VerticalAlignment="Center" Width="193" Height="40"/>
+    </Canvas>
+</Window>
